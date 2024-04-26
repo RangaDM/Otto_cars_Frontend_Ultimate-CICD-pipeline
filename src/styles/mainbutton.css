@@ -1,0 +1,18 @@
+  
+  .car__item-btnx {
+    border-radius: 0.5em;
+    border: none;
+    outline: none;
+    background: #021F61;
+  }
+
+  .car__item-btn2 {
+    border-radius: 0.5em;
+    border: none;
+    outline: none;
+    background: #f9a826;
+  }
+  
+  .car__item-btn a:hover {
+    color: #ff0000;
+  }
