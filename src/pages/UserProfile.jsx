@@ -7,46 +7,55 @@ import { useEffect, useState } from "react";
 
 const UserProfile = () => {
   const [orders, setOrders] = useState([]);
-  const userID = localStorage.getItem("userID");
-  console.log(userID);
 
   const logOut = () => {
     localStorage.removeItem("userID");
     window.location.href = "/";
   };
 
-  // useEffect(() => {
-  //   const fetchOrders = async () => {
-  //     try {
-  //       const response = await fetch(`http://localhost:5000/api/v1/orders/retrievCustomerOrders/${userID}`);
-  //       const data = await response.json();
-  //       setOrders(data);
-  //       console.log(data);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchOrders = async () => {
+      const userID = localStorage.getItem("userID");
+      const token = localStorage.getItem("token");
 
-  //   fetchOrders();
-  // }, [userID]);
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/v1/orders/retrievCustomerOrders/${userID}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const data = await response.json();
+        setOrders(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchOrders();
+  }, []);
 
   return (
     <Helmet title="User">
       <CommonSection title="My Orders" />
       <section>
-        <section className="px-20">
-          <h4 className="topics__title">Welcome {orders.length > 0 ? orders[0].customerName : ""}</h4>
-          <button className="logout__btn" onClick={logOut}>Log Out</button>
-        </section>
-        
+        <div className="px-20 pb-3 flex items-center justify-between">
+          <h2 className="section__title">Welcome {orders[0]?.customerName}</h2>
+          <button className="logout__btn" onClick={logOut}>
+            Log Out
+          </button>
+        </div>
+
         <Container>
           <Row>
             {orders.length === 0 ? (
-              <h2 className="section__title">No orders found</h2>
+              <div className="flex items-center justify-center">
+                <h2 className="section__title">No orders found</h2>
+              </div>
             ) : (
-              orders.map((order) => (
-                <Order key={order._id} order={order} />
-              ))
+              orders.map((order) => <Order key={order._id} order={order} />)
             )}
           </Row>
         </Container>
