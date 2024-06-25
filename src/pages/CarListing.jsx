@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { Container, Row, Col } from "reactstrap";
-import Helmet from "../components/Helmet/Helmet";
-import CommonSection from "../components/UI/CommonSection";
-import CarItem from "../components/UI/CarItem";
 import axios from "axios";
+import React, { useCallback, useEffect, useState } from "react";
+import { Col, Container, Row } from "reactstrap";
+import Helmet from "../components/Helmet/Helmet";
+import CarItem from "../components/UI/CarItem";
+import CommonSection from "../components/UI/CommonSection";
 import Loading from "../components/UI/Loading";
 
 const CarListing = () => {
@@ -18,6 +18,7 @@ const CarListing = () => {
         "http://localhost:5000/api/v1/vehicles/retrieveAllVehicles"
       );
       setCarData(response.data.car);
+      // console.log(response.data.car[0].album[0].photoURL);
       setLoading(false);
     } catch (error) {
       setError("Failed to fetch data. Please try again later.");

@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Col, Container, Row } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
 // import vanData from "../assets/data/vanData";
-import CarRentItem from "../components/UI/Rent_items";
 import axios from "axios";
 import Loading from "../components/UI/Loading";
+import CarRentItem from "../components/UI/Rent_items";
 
 const RentListing = () => {
   const [rentVehicle, setRentVehicle] = useState([]);

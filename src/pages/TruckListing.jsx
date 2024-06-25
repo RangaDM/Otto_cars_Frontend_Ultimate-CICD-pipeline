@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { Container, Row, Col } from "reactstrap";
-import Helmet from "../components/Helmet/Helmet";
-import CommonSection from "../components/UI/CommonSection";
-import CarItem from "../components/UI/CarItem";
 import axios from "axios";
+import React, { useCallback, useEffect, useState } from "react";
+import { Col, Container, Row } from "reactstrap";
+import Helmet from "../components/Helmet/Helmet";
+import CarItem from "../components/UI/CarItem";
+import CommonSection from "../components/UI/CommonSection";
 import Loading from "../components/UI/Loading";
 
 const TruckListing = () => {
@@ -89,7 +89,9 @@ const TruckListing = () => {
               </div>
             )}
             {!showEmptyMessage &&
-              truckData.map((item,index) => <CarItem item={item} key={index} />)}
+              truckData.map((item, index) => (
+                <CarItem item={item} key={index} />
+              ))}
           </Row>
         </Container>
       </section>

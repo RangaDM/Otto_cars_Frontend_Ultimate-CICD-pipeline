@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Container, Row, Col } from "reactstrap";
-import Helmet from "../components/Helmet/Helmet";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Col, Container, Row } from "reactstrap";
+import Helmet from "../components/Helmet/Helmet";
 import BookingForm from "../components/UI/BookingForm";
 
 const CarRentDetails = () => {

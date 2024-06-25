@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Slider from "react-slick";
 import { Col, Container, Row } from "reactstrap";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import Helmet from "../components/Helmet/Helmet";
 import CarItem from "../components/UI/CarItem";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const CarDetails = () => {
   const { slug } = useParams();
